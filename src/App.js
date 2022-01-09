@@ -6,6 +6,7 @@ import InitiativeList from './components/InitiativeList';
 import { CHARACTERS } from './utils/characters';
 import { Button, List } from '@mui/material';
 import { changeIntiativeOrder } from './utils/changeIntiativeOrder';
+import ConditionSelect from './components/conditionSelect'
 import _ from 'lodash';
 
 
@@ -13,14 +14,14 @@ class App extends Component {
   state = {
     characters: [],
     activeCharacter: {},
-    staticCharacterList: []
+    staticCharacterList: [],
   }
   componentDidMount() {
     const sortedCombatants = _.orderBy(CHARACTERS, ['initiative'], ['desc'])
     this.setState({
       characters: sortedCombatants,
       staticCharacterList: sortedCombatants,
-      activeCharacter: sortedCombatants[0]
+      activeCharacter: sortedCombatants[0],
     })
   }
   endTurn = () => {
@@ -58,6 +59,7 @@ class App extends Component {
             }}
           >End turn
           </Button>
+          <ConditionSelect/>
         </div>
 
         </div>
