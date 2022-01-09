@@ -24,9 +24,11 @@ class App extends Component {
     })
   }
   endTurn = () => {
-    const reOrderedInitative = changeIntiativeOrder(this.state.characters)
+    const reOrderedInitative = changeIntiativeOrder(this.state.characters);
+    const newActiveCharacter = reOrderedInitative[0];
     this.setState({
-      characters: reOrderedInitative
+      characters: reOrderedInitative,
+      activeCharacter: newActiveCharacter
     })
   }
   render() {
@@ -36,10 +38,11 @@ class App extends Component {
         <div>
           <NavBar />
         </div>
-        <div class="flex-row">
+        <div className="flex-row">
           <List>
             <InitiativeList
               characters={staticCharacterList}
+              activeCharacter={activeCharacter}
            />
           </List>
           <div>
@@ -50,9 +53,9 @@ class App extends Component {
           <Button
             variant="contained"
             size="large"
-          onClick={() => {
-            this.endTurn()
-          }}
+            onClick={() => {
+              this.endTurn()
+            }}
           >End turn
           </Button>
         </div>

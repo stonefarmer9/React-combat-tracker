@@ -20,3 +20,7 @@
   flex-direction: row;
   align-items: baseline;
 }
+
+.active {
+  background-color: lightblue;
+}
